@@ -89,11 +89,20 @@ const Home = () => {
         const message = event.data.message;
         switch (message) {
             case 'jwtToken':
-                const value = event.data.value
-                if (value !== null && value !== undefined) {
+                const jwtToken = event.data.value
+                if (jwtToken !== null && jwtToken !== undefined) {
                     setAppData({
                         ...appData,
-                        jwtToken: value,
+                        jwtToken: jwtToken,
+                    })
+                }
+                break;
+            case 'apiHost':
+                const apiHost = event.data.value
+                if (apiHost !== null && apiHost !== undefined) {
+                    setAppData({
+                        ...appData,
+                        apiHost: apiHost,
                     })
                 }
                 break;
