@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.84.14](https://github.com/kurtosis-tech/kurtosis/compare/0.84.13...0.84.14) (2023-10-28)
+
+
+### Features
+
+* Add cli argument to control image download ([#1495](https://github.com/kurtosis-tech/kurtosis/issues/1495)) ([f210a76](https://github.com/kurtosis-tech/kurtosis/commit/f210a7604a283d014d79eff109654486c0b7cc83))
+
+
+### Bug Fixes
+
+* run_sh doesn't remove new lines from input ([#1642](https://github.com/kurtosis-tech/kurtosis/issues/1642)) ([a969dff](https://github.com/kurtosis-tech/kurtosis/commit/a969dffd1902952c4500c4f329480909e3f81dfd))
+
 ## [0.84.13](https://github.com/kurtosis-tech/kurtosis/compare/0.84.12...0.84.13) (2023-10-25)
 
 
