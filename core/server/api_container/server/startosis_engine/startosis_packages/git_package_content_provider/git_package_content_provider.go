@@ -206,13 +206,14 @@ func (provider *GitPackageContentProvider) StorePackageContents(packageId string
 }
 
 func (provider *GitPackageContentProvider) GetAbsoluteLocatorForRelativeLocator(
-	parentModuleId string,
+	packageId string,
+	locatorOfModuleInWhichThisBuiltInIsBeingCalled string,
 	maybeRelativeLocator string,
 	packageReplaceOptions map[string]string,
 ) (string, *startosis_errors.InterpretationError) {
 	var absoluteLocator string
 
-	if isSamePackageLocalAbsoluteLocator(maybeRelativeLocator, parentModuleId) {
+	if isSamePackageLocalAbsoluteLocator(maybeRelativeLocator, packageId) {
 		return "", startosis_errors.NewInterpretationError("The locator '%s' set in attribute is not a 'local relative locator'. Local absolute locators are not allowed you should modified it to be a valid 'local relative locator'", maybeRelativeLocator)
 	}
 
@@ -221,9 +222,9 @@ func (provider *GitPackageContentProvider) GetAbsoluteLocatorForRelativeLocator(
 	if errorParsingUrl == nil {
 		absoluteLocator = maybeRelativeLocator
 	} else {
-		parsedParentModuleId, errorParsingPackageId := shared_utils.ParseGitURL(parentModuleId)
+		parsedParentModuleId, errorParsingPackageId := shared_utils.ParseGitURL(locatorOfModuleInWhichThisBuiltInIsBeingCalled)
 		if errorParsingPackageId != nil {
-			return "", startosis_errors.NewInterpretationError("Parent package id '%v' isn't a valid locator; relative URLs don't work with standalone scripts", parentModuleId)
+			return "", startosis_errors.NewInterpretationError("Parent package id '%v' isn't a valid locator; relative URLs don't work with standalone scripts", locatorOfModuleInWhichThisBuiltInIsBeingCalled)
 		}
 
 		absoluteLocator = parsedParentModuleId.GetAbsoluteLocatorRelativeToThisURL(maybeRelativeLocator)

@@ -31,7 +31,7 @@ type PackageContentProvider interface {
 
 	// GetAbsoluteLocatorForRelativeLocator returns the absolute package path for a relative file path and replace the package path if
 	// there is a valid option in the packageReplaceOptions map
-	GetAbsoluteLocatorForRelativeLocator(packageId string, relativeOrAbsoluteLocator string, packageReplaceOptions map[string]string) (string, *startosis_errors.InterpretationError)
+	GetAbsoluteLocatorForRelativeLocator(packageId string, locatorOfModuleInWhichThisBuiltInIsBeingCalled string, relativeOrAbsoluteLocator string, packageReplaceOptions map[string]string) (string, *startosis_errors.InterpretationError)
 
 	// GetKurtosisYaml returns the package kurtosis.yml file content
 	GetKurtosisYaml(packageAbsolutePathOnDisk string) (*yaml_parser.KurtosisYaml, *startosis_errors.InterpretationError)
